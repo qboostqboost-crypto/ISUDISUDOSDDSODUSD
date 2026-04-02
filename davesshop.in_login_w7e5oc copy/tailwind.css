@@ -1,0 +1,169 @@
+/* Improved fonts: Poppins for fallback; primary display font is local 'Boston Black' */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind components;
+@tailwind utilities;
+
+/* Local Swiss 721 Bold font: place the licensed file into public/fonts/Swiss721Bold.ttf */
+@font-face {
+  font-family: 'Swiss 721';
+  src: url('/fonts/Swiss721Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Map regular weight to the same bold file so UI displays consistently if only the bold file is available */
+@font-face {
+  font-family: 'Swiss 721';
+  src: url('/fonts/Swiss721Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://davesshop.in/assets/inter-latin-400-normal-C38fXH4l.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply text-white antialiased;
+    background-color: #060b18;
+  }
+  
+  /* Custom checkbox styling */
+  input[type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 85% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 220 70% 7%;
+    --muted-foreground: 215 30% 55%;
+
+    --accent: 217 65% 10%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 222 85% 4%;
+    --popover-foreground: 215 20% 65%;
+
+    --border: 218 55% 10%;
+    --input: 218 55% 10%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 100% 60%;
+    --primary-foreground: 222 80% 5%;
+
+    --secondary: 218 60% 8%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 213 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  /* Use local Swiss 721 Bold for all UI text (falls back to Poppins) */
+  font-family: 'Swiss 721', 'Poppins', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Color Emoji';
+    font-weight: 400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Headings use local Swiss 721 for a consistent, bold look */
+  h1, h2, h3, h4 {
+    font-family: 'Swiss 721', 'Poppins', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-transform: none;
+  }
+
+  h1 { font-size: 2.25rem; line-height: 1.02; font-weight: 700; }
+  h2 { font-size: 1.375rem; line-height: 1.12; font-weight: 700; }
+  h3 { font-size: 1.05rem; line-height: 1.2; font-weight: 700; }
+}
